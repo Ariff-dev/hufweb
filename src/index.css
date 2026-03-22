@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+@theme {
+  --color-complementary: #16697a;
+  --color-complementary-light: #489fb5ff;
+  --color-complementary-lightest: #82c0ccff;
+  --color-primary: #ede7e3ff;
+  --color-primary-light: #ffa62bff;
+}
+
+
+.dark {
+  --color-primary: #11181bff;
+  --color-primary-light: #ffb64cff;
+  --color-complementary: #82c0ccff;
+  --color-complementary-light: #489fb5ff;
+  --color-complementary-lightest: #16697aff;
+}
