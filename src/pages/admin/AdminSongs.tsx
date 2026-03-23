@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Link } from 'react-router-dom'
 // @ts-ignore
 import { supabase } from '../../lib/supabase'
+// @ts-ignore
+import { uploadImage, getImage } from '../../lib/cloudinary'
 import {
     Plus, X, Pencil, Trash2, Search, ArrowLeft,
-    ExternalLink, Music
+    ExternalLink, Music, Upload
 } from 'lucide-react'
 
 /* ── Types ────────────────────────────────────── */
@@ -73,6 +75,11 @@ export default function AdminSongs() {
     const [form, setForm] = useState<CancionForm>(emptyForm)
     const [saving, setSaving] = useState(false)
 
+    // Image upload state
+    const [imageFile, setImageFile] = useState<File | null>(null)
+    const [imagePreview, setImagePreview] = useState<string | null>(null)
+    const fileInputRef = useRef<HTMLInputElement>(null)
+
     // Delete confirmation
     const [deleteId, setDeleteId] = useState<number | null>(null)
 
@@ -106,11 +113,24 @@ export default function AdminSongs() {
 
         const payload: Record<string, string | number | null> = {}
         for (const [key, value] of formData.entries()) {
+            if (key === 'foto_file') continue // skip file input
             const v = (value as string).trim()
             if (key === 'artista_id') {
                 payload[key] = v === '' ? null : Number(v)
             } else {
                 payload[key] = v === '' ? null : v
+            }
+        }
+
+        // Upload image to Cloudinary if a new file was selected
+        if (imageFile) {
+            try {
+                const publicId = await uploadImage(imageFile, 'canciones')
+                payload.foto_url = publicId
+            } catch (err: any) {
+                alert('Error subiendo imagen: ' + err.message)
+                setSaving(false)
+                return
             }
         }
 
@@ -133,10 +153,20 @@ export default function AdminSongs() {
         fetchCanciones()
     }
 
+    /* ── Image picker helper ─────────────────── */
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0]
+        if (!file) return
+        setImageFile(file)
+        setImagePreview(URL.createObjectURL(file))
+    }
+
     /* ── Modal helpers ─────────────────────────── */
     const openCreate = () => {
         setForm(emptyForm)
         setEditingId(null)
+        setImageFile(null)
+        setImagePreview(null)
         setShowModal(true)
     }
 
@@ -153,6 +183,8 @@ export default function AdminSongs() {
             url_youtube: c.url_youtube ?? '',
         })
         setEditingId(c.id)
+        setImageFile(null)
+        setImagePreview(c.foto_url ? getImage(c.foto_url, { width: 200, height: 200 }) : null)
         setShowModal(true)
     }
 
@@ -160,6 +192,8 @@ export default function AdminSongs() {
         setShowModal(false)
         setEditingId(null)
         setForm(emptyForm)
+        setImageFile(null)
+        setImagePreview(null)
     }
 
     /* ── Filtered list ─────────────────────────── */
@@ -276,7 +310,7 @@ export default function AdminSongs() {
                                                 <div className="flex items-center gap-3">
                                                     {c.foto_url ? (
                                                         <img
-                                                            src={c.foto_url}
+                                                            src={getImage(c.foto_url, { width: 80, height: 80 })}
                                                             alt={c.nombre}
                                                             className="w-10 h-10 rounded-xl object-cover"
                                                         />
@@ -467,18 +501,43 @@ export default function AdminSongs() {
                                     />
                                 </div>
 
-                                {/* Foto URL */}
+                                {/* Portada — file upload */}
                                 <div>
                                     <label className="text-text-muted text-xs font-medium tracking-wide uppercase mb-2 block">
-                                        URL de portada
+                                        Portada de la canción
                                     </label>
-                                    <input
-                                        type="url"
-                                        name="foto_url"
-                                        defaultValue={form.foto_url ?? ''}
-                                        placeholder="https://..."
-                                        className={inputClass}
-                                    />
+                                    <div
+                                        onClick={() => fileInputRef.current?.click()}
+                                        className="relative w-full p-4 rounded-xl bg-surface/60 border-2 border-dashed border-card-border
+                                            hover:border-complementary/50 transition-all duration-300 cursor-pointer group text-center"
+                                    >
+                                        {imagePreview ? (
+                                            <div className="flex items-center gap-4">
+                                                <img src={imagePreview} alt="Preview" className="w-16 h-16 rounded-xl object-cover" />
+                                                <div className="text-left">
+                                                    <p className="text-text text-sm font-medium">{imageFile?.name ?? 'Portada actual'}</p>
+                                                    <p className="text-text-muted text-xs">Clic para cambiar</p>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <div className="flex flex-col items-center gap-2 py-2">
+                                                <div className="w-10 h-10 rounded-xl bg-primary-light/15 flex items-center justify-center
+                                                    group-hover:scale-110 transition-transform">
+                                                    <Upload size={18} className="text-primary-light" />
+                                                </div>
+                                                <p className="text-text-muted text-sm">Clic para subir portada</p>
+                                                <p className="text-text-muted/50 text-xs">JPG, PNG, WebP</p>
+                                            </div>
+                                        )}
+                                        <input
+                                            ref={fileInputRef}
+                                            type="file"
+                                            name="foto_file"
+                                            accept="image/*"
+                                            onChange={handleImageChange}
+                                            className="hidden"
+                                        />
+                                    </div>
                                 </div>
 
                                 {/* Divider */}

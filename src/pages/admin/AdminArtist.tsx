@@ -1,11 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { Link } from 'react-router-dom'
 // @ts-ignore
 import { supabase } from '../../lib/supabase'
+// @ts-ignore
+import { uploadImage, getImage } from '../../lib/cloudinary'
 import {
     Plus, X, Pencil, Trash2, Search, ArrowLeft,
-    ExternalLink, Instagram
+    ExternalLink, Instagram, Upload
 } from 'lucide-react'
 
 /* ── Types ────────────────────────────────────── */
@@ -69,6 +71,11 @@ export default function AdminArtist() {
     const [form, setForm] = useState<ArtistaForm>(emptyForm)
     const [saving, setSaving] = useState(false)
 
+    // Image upload state
+    const [imageFile, setImageFile] = useState<File | null>(null)
+    const [imagePreview, setImagePreview] = useState<string | null>(null)
+    const fileInputRef = useRef<HTMLInputElement>(null)
+
     // Delete confirmation
     const [deleteId, setDeleteId] = useState<number | null>(null)
 
@@ -90,7 +97,20 @@ export default function AdminArtist() {
         setSaving(true)
         const payload: Record<string, string> = {}
         for (const [key, value] of formData.entries()) {
+            if (key === 'foto_file') continue // skip file input
             payload[key] = (value as string).trim()
+        }
+
+        // Upload image to Cloudinary if a new file was selected
+        if (imageFile) {
+            try {
+                const publicId = await uploadImage(imageFile, 'artistas')
+                payload.foto_url = publicId
+            } catch (err: any) {
+                alert('Error subiendo imagen: ' + err.message)
+                setSaving(false)
+                return
+            }
         }
 
         // Clean empty strings to null
@@ -118,10 +138,20 @@ export default function AdminArtist() {
         fetchArtistas()
     }
 
+    /* ── Image picker helper ─────────────────── */
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0]
+        if (!file) return
+        setImageFile(file)
+        setImagePreview(URL.createObjectURL(file))
+    }
+
     /* ── Modal helpers ─────────────────────────── */
     const openCreate = () => {
         setForm(emptyForm)
         setEditingId(null)
+        setImageFile(null)
+        setImagePreview(null)
         setShowModal(true)
     }
 
@@ -138,6 +168,8 @@ export default function AdminArtist() {
             url_sitio_web: a.url_sitio_web ?? '',
         })
         setEditingId(a.id)
+        setImageFile(null)
+        setImagePreview(a.foto_url ? getImage(a.foto_url, { width: 200, height: 200 }) : null)
         setShowModal(true)
     }
 
@@ -145,6 +177,8 @@ export default function AdminArtist() {
         setShowModal(false)
         setEditingId(null)
         setForm(emptyForm)
+        setImageFile(null)
+        setImagePreview(null)
     }
 
     /* ── Filtered list ─────────────────────────── */
@@ -259,7 +293,7 @@ export default function AdminArtist() {
                                                 <div className="flex items-center gap-3">
                                                     {a.foto_url ? (
                                                         <img
-                                                            src={a.foto_url}
+                                                            src={getImage(a.foto_url, { width: 80, height: 80 })}
                                                             alt={a.nombre}
                                                             className="w-10 h-10 rounded-xl object-cover"
                                                         />
@@ -397,18 +431,43 @@ export default function AdminArtist() {
                                     />
                                 </div>
 
-                                {/* Foto URL */}
+                                {/* Foto — file upload */}
                                 <div>
                                     <label className="text-text-muted text-xs font-medium tracking-wide uppercase mb-2 block">
-                                        URL de foto
+                                        Foto del artista
                                     </label>
-                                    <input
-                                        type="url"
-                                        name="foto_url"
-                                        defaultValue={form.foto_url ?? ''}
-                                        placeholder="https://..."
-                                        className={inputClass}
-                                    />
+                                    <div
+                                        onClick={() => fileInputRef.current?.click()}
+                                        className="relative w-full p-4 rounded-xl bg-surface/60 border-2 border-dashed border-card-border
+                                            hover:border-complementary/50 transition-all duration-300 cursor-pointer group text-center"
+                                    >
+                                        {imagePreview ? (
+                                            <div className="flex items-center gap-4">
+                                                <img src={imagePreview} alt="Preview" className="w-16 h-16 rounded-xl object-cover" />
+                                                <div className="text-left">
+                                                    <p className="text-text text-sm font-medium">{imageFile?.name ?? 'Imagen actual'}</p>
+                                                    <p className="text-text-muted text-xs">Clic para cambiar</p>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <div className="flex flex-col items-center gap-2 py-2">
+                                                <div className="w-10 h-10 rounded-xl bg-complementary/15 flex items-center justify-center
+                                                    group-hover:scale-110 transition-transform">
+                                                    <Upload size={18} className="text-complementary" />
+                                                </div>
+                                                <p className="text-text-muted text-sm">Clic para subir imagen</p>
+                                                <p className="text-text-muted/50 text-xs">JPG, PNG, WebP</p>
+                                            </div>
+                                        )}
+                                        <input
+                                            ref={fileInputRef}
+                                            type="file"
+                                            name="foto_file"
+                                            accept="image/*"
+                                            onChange={handleImageChange}
+                                            className="hidden"
+                                        />
+                                    </div>
                                 </div>
 
                                 {/* Divider */}
