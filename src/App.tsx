@@ -1,7 +1,11 @@
 import './App.css'
+import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import HomePage from './pages/home/HomePage'
+
+// Auth Store
+import { useAuthStore } from './context/AuthContext'
 
 // Protected Route and Admin Pages
 import ProtectedRoute from './components/ProtectedRoute'
@@ -11,6 +15,13 @@ import AdminArtist from './pages/admin/AdminArtist'
 import AdminSongs from './pages/admin/AdminSongs'
 
 function App() {
+    const initialize = useAuthStore((s) => s.initialize)
+
+    useEffect(() => {
+        const unsubscribe = initialize()
+        return unsubscribe
+    }, [initialize])
+
     return (
         <BrowserRouter>
             <Routes>

@@ -1,23 +1,26 @@
 import { useState } from 'react'
-// @ts-ignore
-import { supabase } from '../../lib/supabase'
 import { useNavigate } from 'react-router-dom'
+import { useAuthStore } from '../../context/AuthContext'
 
 export default function Login() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState('')
     const navigate = useNavigate()
+    const login = useAuthStore((s) => s.login)
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault()
         setLoading(true)
-        const { error } = await supabase.auth.signInWithPassword({ email, password })
-        setLoading(false)
-        if (!error) {
+        setError('')
+        try {
+            await login(email, password)
             navigate('/admin')
-        } else {
-            alert(error.message)
+        } catch (err: any) {
+            setError(err.message || 'Error al iniciar sesión')
+        } finally {
+            setLoading(false)
         }
     }
 
@@ -25,6 +28,7 @@ export default function Login() {
         <div className="min-h-screen flex items-center justify-center p-4">
             <div className="bg-card-bg border border-card-border p-8 rounded-xl w-full max-w-sm">
                 <h1 className="text-2xl font-display font-bold mb-6 text-center">Admin Login</h1>
+                {error && <p className="text-red-500 text-sm mb-4 text-center">{error}</p>}
                 <form onSubmit={handleLogin} className="flex flex-col gap-4">
                     <input
                         type="email"
