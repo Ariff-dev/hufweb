@@ -1,24 +1,15 @@
 import { motion } from 'motion/react'
 
-/* ── Data ─────────────────────────────────────── */
-const artists = [
-    { name: 'Lael Neale', genre: 'Indie / Lo-Fi', listeners: '120k', img: '/images/artists/artist_1.png' },
-    { name: 'Nana Adjoa', genre: 'Alt R&B / Soul', listeners: '45k', img: '/images/artists/artist_2.png' },
-    { name: 'Dijon', genre: 'Indie Soul', listeners: '380k', img: '/images/artists/artist_3.png' },
-    { name: 'Say She She', genre: 'Disco / Funk', listeners: '90k', img: '/images/artists/artist_4.png' },
-]
-
 const steps = [
-    { num: '01', title: 'Descubrimos', desc: 'Buscamos artistas emergentes con menos de 500K oyentes mensuales que merezcan ser escuchados.' },
-    { num: '02', title: 'Compartimos', desc: 'Creamos contenido y reseñas para dar visibilidad a su música en la comunidad hispanohablante.' },
-    { num: '03', title: 'Conectamos', desc: 'Unimos oyentes mexicanos con artistas internacionales para acelerar su llegada a México.' },
+    { num: '01', title: 'Menos de 500K oyentes', desc: 'El límite no es arbitrario. Es el punto donde un artista todavía no tiene el empuje suficiente para cruzar fronteras por su cuenta.' },
+    { num: '02', title: 'Que no esté llegando', desc: 'No importa si es de México o de cualquier otro país. Lo que importa es que su música merece más alcance del que tiene.' },
+    { num: '03', title: 'Que me mueva algo', desc: 'No hay fórmula. Si escucho una canción y siento que tengo que compartirla, eso es suficiente para que entre a HUF.' },
 ]
 
 const stats = [
-    { value: '500+', label: 'Artistas descubiertos' },
-    { value: '32', label: 'Países representados' },
+    { value: '32', label: 'Países de origen' },
     { value: '< 500K', label: 'Oyentes mensuales máx.' },
-    { value: '∞', label: 'Música por compartir' },
+    { value: '∞', label: 'Música por descubrir' },
 ]
 
 /* ── Animation variants ───────────────────────── */
@@ -58,7 +49,7 @@ export default function HomePage() {
                         transition={{ duration: 0.6 }}
                         className="text-complementary dark:text-complementary font-medium tracking-[0.3em] uppercase text-sm mb-6"
                     >
-                        Música que merece ser escuchada
+                        Un proyecto personal para la comunidad
                     </motion.p>
 
                     <motion.h1
@@ -78,8 +69,8 @@ export default function HomePage() {
                         transition={{ duration: 0.7, delay: 0.35 }}
                         className="text-text-muted text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
                     >
-                        Descubre artistas emergentes de todo el mundo con menos de 500K oyentes mensuales.
-                        Conecta con la música que aún no encuentras en los algoritmos.
+                        Hay artistas increíbles que no llegan a tus oídos. Este es mi intento de cambiar eso,
+                        empezando desde México, pero para cualquiera que quiera escucharlos.
                     </motion.p>
 
                     <motion.div
@@ -89,19 +80,21 @@ export default function HomePage() {
                         className="flex flex-col sm:flex-row gap-4 justify-center"
                     >
                         <a
-                            href="#artistas"
+                            href="#por-que"
                             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-complementary text-white font-semibold text-base
                          hover:bg-complementary-light transition-all duration-300 hover:shadow-lg hover:shadow-complementary/25 hover:-translate-y-0.5"
                         >
-                            <span>Explorar Artistas</span>
+                            <span>¿Por qué existe esto?</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
                         </a>
                         <a
-                            href="#mision"
+                            href="https://instagram.com/huf"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-complementary/30 text-text font-semibold text-base
                          hover:border-complementary hover:bg-complementary/10 transition-all duration-300 hover:-translate-y-0.5"
                         >
-                            Nuestra Misión
+                            Seguir en Instagram
                         </a>
                     </motion.div>
                 </div>
@@ -127,7 +120,7 @@ export default function HomePage() {
             {/* ─── STATS BAR ────────────────────────── */}
             <div className="section-divider mx-auto max-w-4xl" />
             <section className="py-16 px-8 md:px-16 lg:px-24">
-                <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div className="max-w-4xl mx-auto grid grid-cols-3 gap-8">
                     {stats.map((s, i) => (
                         <motion.div
                             key={s.label}
@@ -146,8 +139,8 @@ export default function HomePage() {
             </section>
             <div className="section-divider mx-auto max-w-4xl" />
 
-            {/* ─── MISIÓN / ABOUT ───────────────────── */}
-            <section id="mision" className="py-24 md:py-32 px-8 md:px-16 lg:px-24">
+            {/* ─── POR QUÉ / ABOUT ──────────────────── */}
+            <section id="por-que" className="py-24 md:py-32 px-8 md:px-16 lg:px-24">
                 <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
                     <div>
                         <motion.span
@@ -158,7 +151,7 @@ export default function HomePage() {
                             viewport={{ once: true }}
                             className="text-complementary font-medium tracking-[0.25em] uppercase text-xs mb-4 block"
                         >
-                            Nuestra Misión
+                            Por qué existe HUF
                         </motion.span>
                         <motion.h2
                             variants={fadeUp}
@@ -168,8 +161,8 @@ export default function HomePage() {
                             viewport={{ once: true }}
                             className="font-display font-800 text-4xl sm:text-5xl md:text-6xl leading-tight mb-6"
                         >
-                            La música no tiene
-                            <span className="gradient-text"> fronteras</span>
+                            Mis artistas
+                            <span className="gradient-text"> favoritos</span> no llegan a México
                         </motion.h2>
                         <motion.p
                             variants={fadeUp}
@@ -179,9 +172,9 @@ export default function HomePage() {
                             viewport={{ once: true }}
                             className="text-text-muted text-lg leading-relaxed mb-6"
                         >
-                            Hay artistas increíbles en todo el mundo que no llegan a tus oídos porque los algoritmos
-                            solo impulsan lo masivo. HUF nace para cambiar eso — para que descubras a esos artistas
-                            que se convertirán en tus favoritos.
+                            Me llamo <strong className="text-text">Ariff</strong> y tengo un problema: muchos de los artistas
+                            que me mueven son emergentes y, sin importar de dónde vengan,
+                            no tienen el empuje suficiente para llegar a México.
                         </motion.p>
                         <motion.p
                             variants={fadeUp}
@@ -191,10 +184,9 @@ export default function HomePage() {
                             viewport={{ once: true }}
                             className="text-text-muted text-lg leading-relaxed"
                         >
-                            Soy <strong className="text-text">Ariff Martínez</strong>, y la mayoría de mis artistas
-                            favoritos son internacionales. Al ser medianos o emergentes, rara vez vienen a México.
-                            Mi sueño es que más mexicanos los conozcan, los escuchen, y juntos aceleremos el día
-                            en que digan: <em className="text-primary-light">"México, ¡allá vamos!"</em>
+                            HUF nació de esa frustración. Mi objetivo empieza en México —que más gente de aquí
+                            los descubra—, pero la música no tiene fronteras y este proyecto tampoco.
+                            No es un negocio, no es una plataforma. Es un proyecto personal, para la comunidad.
                         </motion.p>
                     </div>
 
@@ -213,8 +205,8 @@ export default function HomePage() {
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-complementary"><path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" /></svg>
                                     </div>
                                     <div>
-                                        <h3 className="font-display font-700 text-text text-lg mb-1">Artistas Emergentes</h3>
-                                        <p className="text-text-muted text-sm">Curamos artistas con menos de 500K oyentes mensuales que están creando algo especial.</p>
+                                        <h3 className="font-display font-700 text-text text-lg mb-1">No es un algoritmo, soy yo</h3>
+                                        <p className="text-text-muted text-sm">Cada artista que aparece aquí lo escuché, lo pensé y decidí compartirlo. No hay métricas de por medio, solo mi criterio.</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">
@@ -222,8 +214,8 @@ export default function HomePage() {
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-light"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
                                     </div>
                                     <div>
-                                        <h3 className="font-display font-700 text-text text-lg mb-1">Alcance Global</h3>
-                                        <p className="text-text-muted text-sm">Conectamos oyentes mexicanos con artistas de todo el mundo que aún no han cruzado fronteras.</p>
+                                        <h3 className="font-display font-700 text-text text-lg mb-1">Hecho desde México, para el mundo</h3>
+                                        <p className="text-text-muted text-sm">Nace en México porque es donde vivo, pero la música no tiene pasaporte. Cualquiera puede descubrir algo nuevo aquí, sin importar de dónde sea.</p>
                                     </div>
                                 </div>
                                 <div className="flex items-start gap-4">
@@ -231,8 +223,8 @@ export default function HomePage() {
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-complementary-lightest"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
                                     </div>
                                     <div>
-                                        <h3 className="font-display font-700 text-text text-lg mb-1">Comunidad</h3>
-                                        <p className="text-text-muted text-sm">Construimos una comunidad de personas que creen que la buena música merece ser escuchada, sin importar las cifras.</p>
+                                        <h3 className="font-display font-700 text-text text-lg mb-1">La comunidad lo hace crecer</h3>
+                                        <p className="text-text-muted text-sm">Si tú también tienes un artista que sientes que el mundo necesita escuchar, este es tu espacio. HUF lo construimos entre todos.</p>
                                     </div>
                                 </div>
                             </div>
@@ -244,81 +236,8 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* ─── FEATURED ARTISTS ─────────────────── */}
-            <section id="artistas" className="py-24 md:py-32 px-8 md:px-16 lg:px-24">
-                <div className="max-w-6xl mx-auto">
-                    <motion.span
-                        variants={fadeUp}
-                        custom={0}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        className="text-complementary font-medium tracking-[0.25em] uppercase text-xs mb-4 block text-center"
-                    >
-                        Artistas Destacados
-                    </motion.span>
-                    <motion.h2
-                        variants={fadeUp}
-                        custom={1}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        className="font-display font-800 text-4xl sm:text-5xl md:text-6xl text-center mb-4 leading-tight"
-                    >
-                        Conoce a quienes
-                        <span className="gradient-text"> deberías escuchar</span>
-                    </motion.h2>
-                    <motion.p
-                        variants={fadeUp}
-                        custom={2}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        className="text-text-muted text-lg text-center max-w-2xl mx-auto mb-16"
-                    >
-                        Una selección curada de artistas emergentes que están redefiniendo la música desde cada rincón del mundo.
-                    </motion.p>
 
-                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                        {artists.map((a, i) => (
-                            <motion.div
-                                key={a.name}
-                                custom={i}
-                                variants={scaleIn}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true, amount: 0.2 }}
-                                className="glass-card overflow-hidden group cursor-pointer"
-                            >
-                                <div className="relative overflow-hidden">
-                                    <img
-                                        src={a.img}
-                                        alt={a.name}
-                                        className="w-full aspect-square object-cover transition-transform duration-500 group-hover:scale-110"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-                                    {/* Play button overlay */}
-                                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-400">
-                                        <div className="w-14 h-14 rounded-full bg-primary-light/90 flex items-center justify-center shadow-lg shadow-primary-light/30 hover:scale-110 transition-transform">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="white" className="ml-0.5"><polygon points="5 3 19 12 5 21 5 3" /></svg>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="p-5">
-                                    <h3 className="font-display font-700 text-text text-lg mb-1">{a.name}</h3>
-                                    <p className="text-complementary text-sm font-medium mb-2">{a.genre}</p>
-                                    <div className="flex items-center gap-1.5 text-text-muted text-xs">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
-                                        <span>{a.listeners} oyentes/mes</span>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
-            {/* ─── MANIFIESTO / HOW IT WORKS ────────── */}
+            {/* ─── CRITERIOS / HOW IT WORKS ─────────── */}
             <section id="manifiesto" className="py-24 md:py-32 px-8 md:px-16 lg:px-24 relative">
                 {/* Bg glow */}
                 <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-complementary/8 blur-[140px] rounded-full pointer-events-none" />
@@ -332,7 +251,7 @@ export default function HomePage() {
                         viewport={{ once: true }}
                         className="text-complementary font-medium tracking-[0.25em] uppercase text-xs mb-4 block text-center"
                     >
-                        Manifiesto
+                        Cómo elijo a los artistas
                     </motion.span>
                     <motion.h2
                         variants={fadeUp}
@@ -342,8 +261,8 @@ export default function HomePage() {
                         viewport={{ once: true }}
                         className="font-display font-800 text-4xl sm:text-5xl md:text-6xl text-center mb-6 leading-tight max-w-4xl mx-auto"
                     >
-                        La falta de presupuesto no define el
-                        <span className="gradient-text"> talento</span>
+                        Hay tres reglas,
+                        <span className="gradient-text"> nada más</span>
                     </motion.h2>
                     <motion.p
                         variants={fadeUp}
@@ -353,8 +272,8 @@ export default function HomePage() {
                         viewport={{ once: true }}
                         className="text-text-muted text-lg text-center max-w-3xl mx-auto mb-20 leading-relaxed"
                     >
-                        Hay artistas que no tienen el presupuesto, el tiempo, el contenido o el apoyo para darse a conocer.
-                        Pero su música habla por sí sola. Nuestro trabajo es asegurarnos de que alguien la escuche.
+                        No hay comité, no hay patrocinadores ni artistas que paguen para aparecer.
+                        Solo tres criterios que aplico cada vez que pienso en compartir a alguien.
                     </motion.p>
 
                     <div className="grid md:grid-cols-3 gap-8">
@@ -379,7 +298,7 @@ export default function HomePage() {
                 </div>
             </section>
 
-            {/* ─── CTA / CONTACT ────────────────────── */}
+            {/* ─── CTA / CONTACTO ───────────────────── */}
             <section id="contacto" className="py-24 md:py-32 px-8 md:px-16 lg:px-24 relative overflow-hidden">
                 <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-primary-light/15 blur-3xl pointer-events-none" />
                 <div className="absolute -bottom-20 -left-20 w-96 h-96 rounded-full bg-complementary/10 blur-3xl pointer-events-none" />
@@ -393,15 +312,15 @@ export default function HomePage() {
                     className="max-w-3xl mx-auto text-center relative z-10"
                 >
                     <span className="text-complementary font-medium tracking-[0.25em] uppercase text-xs mb-4 block">
-                        Únete
+                        Súmate
                     </span>
                     <h2 className="font-display font-800 text-4xl sm:text-5xl md:text-6xl leading-tight mb-6">
-                        ¿Conoces a un artista que el mundo
-                        <span className="gradient-text"> necesita escuchar?</span>
+                        ¿Tienes un artista que
+                        <span className="gradient-text"> debería escuchar?</span>
                     </h2>
                     <p className="text-text-muted text-lg mb-10 max-w-xl mx-auto leading-relaxed">
-                        Si tienes una recomendación, quieres colaborar, o simplemente conectar — escríbenos.
-                        Este proyecto lo construimos entre todos.
+                        Mándame tu recomendación. Si cumple los criterios y me mueve algo, lo comparto.
+                        Este proyecto crece con las personas que lo siguen.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <a
@@ -410,7 +329,7 @@ export default function HomePage() {
                          hover:bg-complementary-light transition-all duration-300 hover:shadow-lg hover:shadow-complementary/25 hover:-translate-y-0.5"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
-                            <span>Escríbenos</span>
+                            <span>Escríbeme</span>
                         </a>
                         <a
                             href="https://instagram.com/huf"
@@ -420,7 +339,7 @@ export default function HomePage() {
                          hover:border-complementary hover:bg-complementary/10 transition-all duration-300 hover:-translate-y-0.5"
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
-                            <span>Instagram</span>
+                            <span>Seguir en Instagram</span>
                         </a>
                     </div>
                 </motion.div>
@@ -434,7 +353,7 @@ export default function HomePage() {
                         <span className="text-text-muted text-sm">Hazte un favor</span>
                     </div>
                     <p className="text-text-muted text-sm text-center">
-                        Hecho con <span className="text-primary-light">♥</span> desde México © {new Date().getFullYear()}
+                        Hecho con <span className="text-primary-light">♥</span> desde México por Ariff © {new Date().getFullYear()}
                     </p>
                     <div className="flex gap-4">
                         <a href="https://instagram.com/huf" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-complementary transition-colors">
