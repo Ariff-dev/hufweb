@@ -1,18 +1,46 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
 
 @theme {
+  --font-sans: 'Inter', sans-serif;
+  --font-display: 'Outfit', sans-serif;
+
   --color-complementary: #16697a;
-  --color-complementary-light: #489fb5ff;
-  --color-complementary-lightest: #82c0ccff;
-  --color-primary: #ede7e3ff;
-  --color-primary-light: #ffa62bff;
+  --color-complementary-light: #489fb5;
+  --color-complementary-lightest: #82c0cc;
+  --color-primary: #ede7e3;
+  --color-primary-light: #ffa62b;
+
+  --color-surface: #f5f0ec;
+  --color-surface-alt: #e8e0da;
+  --color-text: #1a1a2e;
+  --color-text-muted: #555566;
+  --color-card-bg: rgba(255, 255, 255, 0.7);
+  --color-card-border: rgba(22, 105, 122, 0.15);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
 .dark {
-  --color-primary: #11181bff;
-  --color-primary-light: #ffb64cff;
-  --color-complementary: #82c0ccff;
-  --color-complementary-light: #489fb5ff;
-  --color-complementary-lightest: #16697aff;
+  --color-complementary: #82c0cc;
+  --color-complementary-light: #489fb5;
+  --color-complementary-lightest: #16697a;
+  --color-primary: #11181b;
+  --color-primary-light: #ffb64c;
+
+  --color-surface: #1a2229;
+  --color-surface-alt: #222d35;
+  --color-text: #ede7e3;
+  --color-text-muted: #8a9baa;
+  --color-card-bg: rgba(26, 34, 41, 0.7);
+  --color-card-border: rgba(130, 192, 204, 0.15);
 }
