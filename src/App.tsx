@@ -1,16 +1,39 @@
 import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import HomePage from './Home/HomePage'
+import HomePage from './pages/home/HomePage'
+
+// Protected Route and Admin Pages
+import ProtectedRoute from './components/ProtectedRoute'
+import Login from './pages/admin/Login'
+import Dashboard from './pages/admin/Dashboard'
+import AdminArtist from './pages/admin/AdminArtist'
+import AdminSongs from './pages/admin/AdminSongs'
 
 function App() {
     return (
         <BrowserRouter>
-            <Navbar />
             <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/artistas" element={<PlaceholderPage title="Artistas" />} />
-                <Route path="/redes" element={<PlaceholderPage title="Redes Sociales" />} />
+                {/* Public routes with Navbar */}
+                <Route element={<><Navbar /><Outlet /></>}>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/artistas" element={<PlaceholderPage title="Artistas" />} />
+                    <Route path="/redes" element={<PlaceholderPage title="Redes Sociales" />} />
+                </Route>
+
+                {/* Admin login without Navbar */}
+                <Route path="/admin/login" element={<Login />} />
+
+                {/* Protected Admin routes without public Navbar */}
+                <Route path="/admin" element={
+                    <ProtectedRoute>
+                        <Outlet />
+                    </ProtectedRoute>
+                }>
+                    <Route index element={<Dashboard />} />
+                    <Route path="artistas" element={<AdminArtist />} />
+                    <Route path="canciones" element={<AdminSongs />} />
+                </Route>
             </Routes>
         </BrowserRouter>
     )
