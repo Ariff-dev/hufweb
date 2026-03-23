@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { motion, AnimatePresence } from 'motion/react'
-import { Home, Music, Share2, Sun, Moon, X, Menu } from 'lucide-react'
+import { Home, Music, Users, Sun, Moon, X, Menu } from 'lucide-react'
 
 /* ── Nav items ────────────────────────────────── */
 const navItems = [
     { to: '/', icon: Home, label: 'Home' },
-    { to: '/artistas', icon: Music, label: 'Artistas' },
-    { to: '/redes', icon: Share2, label: 'Redes sociales' },
+    { to: '/artistas', icon: Users, label: 'Artistas' },
+    { to: '/canciones', icon: Music, label: 'Canciones' },
 ]
 
 /* ── Component ────────────────────────────────── */
