@@ -1,4 +1,5 @@
 import { motion } from 'motion/react'
+import { ChevronRight, Music, Globe, Users, Mail, Instagram, Twitter } from 'lucide-react'
 
 const steps = [
     { num: '01', title: 'Menos de 500K oyentes', desc: 'El límite no es arbitrario. Es el punto donde un artista todavía no tiene el empuje suficiente para cruzar fronteras por su cuenta.' },
@@ -8,7 +9,7 @@ const steps = [
 
 const stats = [
     { value: '32', label: 'Países de origen' },
-    { value: '< 500K', label: 'Oyentes mensuales máx.' },
+    { value: '<500K', label: 'Oyentes mensuales máx.' },
     { value: '∞', label: 'Música por descubrir' },
 ]
 
@@ -85,16 +86,17 @@ export default function HomePage() {
                          hover:bg-complementary-light transition-all duration-300 hover:shadow-lg hover:shadow-complementary/25 hover:-translate-y-0.5"
                         >
                             <span>¿Por qué existe esto?</span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+                            <ChevronRight size={18} />
                         </a>
                         <a
-                            href="https://instagram.com/huf"
+                            href="https://tiktok.com/@huf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-complementary/30 text-text font-semibold text-base
                          hover:border-complementary hover:bg-complementary/10 transition-all duration-300 hover:-translate-y-0.5"
                         >
-                            Seguir en Instagram
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" /></svg>
+                            Seguir en TikTok
                         </a>
                     </motion.div>
                 </div>
@@ -202,7 +204,7 @@ export default function HomePage() {
                             <div className="space-y-6">
                                 <div className="flex items-start gap-4">
                                     <div className="mt-1 w-10 h-10 rounded-xl bg-complementary/15 flex items-center justify-center shrink-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-complementary"><path d="M9 18V5l12-2v13" /><circle cx="6" cy="18" r="3" /><circle cx="18" cy="16" r="3" /></svg>
+                                        <Music size={20} className="text-complementary" />
                                     </div>
                                     <div>
                                         <h3 className="font-display font-700 text-text text-lg mb-1">No es un algoritmo, soy yo</h3>
@@ -211,7 +213,7 @@ export default function HomePage() {
                                 </div>
                                 <div className="flex items-start gap-4">
                                     <div className="mt-1 w-10 h-10 rounded-xl bg-primary-light/15 flex items-center justify-center shrink-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary-light"><circle cx="12" cy="12" r="10" /><path d="M2 12h20" /><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" /></svg>
+                                        <Globe size={20} className="text-primary-light" />
                                     </div>
                                     <div>
                                         <h3 className="font-display font-700 text-text text-lg mb-1">Hecho desde México, para el mundo</h3>
@@ -220,7 +222,7 @@ export default function HomePage() {
                                 </div>
                                 <div className="flex items-start gap-4">
                                     <div className="mt-1 w-10 h-10 rounded-xl bg-complementary-lightest/15 flex items-center justify-center shrink-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-complementary-lightest"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
+                                        <Users size={20} className="text-complementary-lightest" />
                                     </div>
                                     <div>
                                         <h3 className="font-display font-700 text-text text-lg mb-1">La comunidad lo hace crecer</h3>
@@ -328,18 +330,18 @@ export default function HomePage() {
                             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-complementary text-white font-semibold text-base
                          hover:bg-complementary-light transition-all duration-300 hover:shadow-lg hover:shadow-complementary/25 hover:-translate-y-0.5"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="16" x="2" y="4" rx="2" /><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" /></svg>
+                            <Mail size={18} />
                             <span>Escríbeme</span>
                         </a>
                         <a
-                            href="https://instagram.com/huf"
+                            href="https://tiktok.com/@huf"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-complementary/30 text-text font-semibold text-base
                          hover:border-complementary hover:bg-complementary/10 transition-all duration-300 hover:-translate-y-0.5"
                         >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
-                            <span>Seguir en Instagram</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" /></svg>
+                            <span>Seguir en TikTok</span>
                         </a>
                     </div>
                 </motion.div>
@@ -357,13 +359,13 @@ export default function HomePage() {
                     </p>
                     <div className="flex gap-4">
                         <a href="https://instagram.com/huf" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-complementary transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" x2="17.51" y1="6.5" y2="6.5" /></svg>
+                            <Instagram size={20} />
                         </a>
                         <a href="https://tiktok.com/@huf" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-complementary transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 8v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5Z" /><path d="M10 12a3 3 0 1 0 3 3V6c.3 1.8 1.7 3 3.5 3" /></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" /></svg>
                         </a>
                         <a href="https://twitter.com/huf" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-complementary transition-colors">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" /></svg>
+                            <Twitter size={20} />
                         </a>
                     </div>
                 </div>
