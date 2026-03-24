@@ -358,15 +358,21 @@ export default function HomePage() {
                         Hecho con <span className="text-primary-light">♥</span> desde México por Ariff © {new Date().getFullYear()}
                     </p>
                     <div className="flex gap-4">
+                        {/* 
                         <a href="https://instagram.com/huf" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-complementary transition-colors">
                             <Instagram size={20} />
                         </a>
+                        */}
                         <a href="https://www.tiktok.com/@ariff.raw" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-complementary transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" /></svg>
                         </a>
+                        {/* 
+
                         <a href="https://twitter.com/huf" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-complementary transition-colors">
                             <Twitter size={20} />
                         </a>
+                        */}
+
                     </div>
                 </div>
             </footer>
