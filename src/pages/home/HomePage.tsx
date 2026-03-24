@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { ChevronRight, Music, Globe, Users, Mail, Instagram, Twitter } from 'lucide-react'
+import { ChevronRight, Music, Globe, Users, Mail } from 'lucide-react'
 
 const steps = [
     { num: '01', title: 'Menos de 500K oyentes', desc: 'El límite no es arbitrario. Es el punto donde un artista todavía no tiene el empuje suficiente para cruzar fronteras por su cuenta.' },
