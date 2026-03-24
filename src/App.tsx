@@ -11,6 +11,9 @@ import SlugSong from './pages/songs/SlugSong'
 // Auth Store
 import { useAuthStore } from './context/AuthContext'
 
+// Analytics
+import { Analytics } from '@vercel/analytics/react'
+
 // Protected Route and Admin Pages
 import ProtectedRoute from './components/ProtectedRoute'
 import Login from './pages/admin/Login'
@@ -52,6 +55,7 @@ function App() {
                     <Route path="canciones" element={<AdminSongs />} />
                 </Route>
             </Routes>
+            <Analytics />
         </BrowserRouter>
     )
 }
