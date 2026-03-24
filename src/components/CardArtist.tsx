@@ -1,4 +1,5 @@
 import { motion } from 'motion/react'
+import { Link } from 'react-router-dom'
 // @ts-ignore
 import { getImage } from '../lib/cloudinary'
 import { Users } from 'lucide-react'
@@ -24,6 +25,7 @@ export default function CardArtist({ artista, index = 0 }: CardArtistProps) {
     const imgUrl = getImage(artista.foto_url, { width: 600, height: 600, mode: 'fill' })
 
     return (
+        <Link to={`/artistas/${artista.id}`} className="block">
         <motion.article
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -99,5 +101,6 @@ export default function CardArtist({ artista, index = 0 }: CardArtistProps) {
                 )}
             </div>
         </motion.article>
+        </Link>
     )
 }

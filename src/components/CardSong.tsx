@@ -1,4 +1,5 @@
 import { motion } from 'motion/react'
+import { Link } from 'react-router-dom'
 // @ts-ignore
 import { getImage } from '../lib/cloudinary'
 import { Music, ExternalLink } from 'lucide-react'
@@ -28,6 +29,7 @@ export default function CardSong({ cancion, index = 0 }: CardSongProps) {
     const imgUrl = getImage(cancion.foto_url, { width: 600, height: 600, mode: 'fill' })
 
     return (
+        <Link to={`/canciones/${cancion.id}`} className="block">
         <motion.article
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -111,5 +113,6 @@ export default function CardSong({ cancion, index = 0 }: CardSongProps) {
                 )}
             </div>
         </motion.article>
+        </Link>
     )
 }

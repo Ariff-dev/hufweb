@@ -5,6 +5,8 @@ import Navbar from './components/Navbar'
 import HomePage from './pages/home/HomePage'
 import ArtistsPage from './pages/artists/ArtistsPage'
 import SongsPage from './pages/songs/SongsPage'
+import SlugArtist from './pages/artists/SlugArtist'
+import SlugSong from './pages/songs/SlugSong'
 
 // Auth Store
 import { useAuthStore } from './context/AuthContext'
@@ -31,7 +33,9 @@ function App() {
                 <Route element={<><Navbar /><Outlet /></>}>
                     <Route path="/" element={<HomePage />} />
                     <Route path="/artistas" element={<ArtistsPage />} />
+                    <Route path="/artistas/:id" element={<SlugArtist />} />
                     <Route path="/canciones" element={<SongsPage />} />
+                    <Route path="/canciones/:id" element={<SlugSong />} />
                 </Route>
 
                 {/* Admin login without Navbar */}
