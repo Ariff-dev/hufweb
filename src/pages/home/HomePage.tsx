@@ -1,5 +1,5 @@
 import { motion } from 'motion/react'
-import { ChevronRight, Music, Globe, Users, Mail } from 'lucide-react'
+import { ChevronRight, Music, Globe, Users, Instagram } from 'lucide-react'
 
 const steps = [
     { num: '01', title: 'Menos de 500K oyentes', desc: 'El límite no es arbitrario. Es el punto donde un artista todavía no tiene el empuje suficiente para cruzar fronteras por su cuenta.' },
@@ -89,7 +89,7 @@ export default function HomePage() {
                             <ChevronRight size={18} />
                         </a>
                         <a
-                            href="https://www.tiktok.com/@ariff.raw"
+                            href="https://www.tiktok.com/@ariff.rec"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-complementary/30 text-text font-semibold text-base
@@ -326,15 +326,17 @@ export default function HomePage() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <a
-                            href="mailto:hola@huf.mx"
+                            href="https://www.instagram.com/ariff.rec"
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-complementary text-white font-semibold text-base
                          hover:bg-complementary-light transition-all duration-300 hover:shadow-lg hover:shadow-complementary/25 hover:-translate-y-0.5"
                         >
-                            <Mail size={18} />
-                            <span>Escríbeme</span>
+                            <Instagram size={18} />
+                            <span>@ariff.rec</span>
                         </a>
                         <a
-                            href="https://www.tiktok.com/@ariff.raw"
+                            href="https://www.tiktok.com/@ariff.rec"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-complementary/30 text-text font-semibold text-base
@@ -358,12 +360,10 @@ export default function HomePage() {
                         Hecho con <span className="text-primary-light">♥</span> desde México por Ariff © {new Date().getFullYear()}
                     </p>
                     <div className="flex gap-4">
-                        {/* 
-                        <a href="https://instagram.com/huf" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-complementary transition-colors">
+                        <a href="https://www.instagram.com/ariff.rec" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-complementary transition-colors">
                             <Instagram size={20} />
                         </a>
-                        */}
-                        <a href="https://www.tiktok.com/@ariff.raw" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-complementary transition-colors">
+                        <a href="https://www.tiktok.com/@ariff.rec" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-complementary transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" /></svg>
                         </a>
                         {/* 
