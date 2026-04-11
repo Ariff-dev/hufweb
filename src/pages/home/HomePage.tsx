@@ -89,7 +89,7 @@ export default function HomePage() {
                             <ChevronRight size={18} />
                         </a>
                         <a
-                            href="https://www.tiktok.com/@ariff.rec"
+                            href="https://www.tiktok.com/@arf.rec"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-complementary/30 text-text font-semibold text-base
@@ -333,10 +333,10 @@ export default function HomePage() {
                          hover:bg-complementary-light transition-all duration-300 hover:shadow-lg hover:shadow-complementary/25 hover:-translate-y-0.5"
                         >
                             <Instagram size={18} />
-                            <span>@ariff.rec</span>
+                            <span>@arf.rec</span>
                         </a>
                         <a
-                            href="https://www.tiktok.com/@ariff.rec"
+                            href="https://www.tiktok.com/@arf.rec"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full border-2 border-complementary/30 text-text font-semibold text-base
@@ -363,7 +363,7 @@ export default function HomePage() {
                         <a href="https://www.instagram.com/ariff.rec" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-complementary transition-colors">
                             <Instagram size={20} />
                         </a>
-                        <a href="https://www.tiktok.com/@ariff.rec" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-complementary transition-colors">
+                        <a href="https://www.tiktok.com/@arf.rec" target="_blank" rel="noopener noreferrer" className="text-text-muted hover:text-complementary transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" /></svg>
                         </a>
                         {/* 
